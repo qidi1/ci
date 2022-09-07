@@ -233,36 +233,7 @@ node("lightweight_pod") {
     container("golang") {
 
         stage("Trigger job") {
-            def now = new Date().getDay()
-            switch (now) {
-                case 1:
-                    test_master("release-4.0")
-                    test_release2_4("release-4.0")
-                    break
-                case 2:
-                    test_master("release-5.0")
-                    test_release2_5("release-5.0")
-                    break
-                case 3:
-                    test_master("release-5.4")
-                    test_release3_0("release-5.4")
-                    break
-                case 4:
-                    test_master("release-6.1")
-                    test_release2_4("release-6.1")
-                    break
-                case 5:
-                    test_master("master")
-                    test_release2_5("master")
-                    break
-                case 6:
-                    test_release2_4("master")
-                    test_release3_0("master")
-                    break;
-                case 7:
-                    test_master_tiflash("master")
-                    break;
-            }
+            release_master()
         }
 
     }
